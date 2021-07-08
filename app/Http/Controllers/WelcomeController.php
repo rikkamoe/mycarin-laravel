@@ -14,7 +14,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $cars = Car::paginate(3)->where('status_car', 1);
+        $cars = Car::where('status_car', 1)->limit(3)->get();
         return view('welcome', compact('cars'));
     }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Order;
+use App\OrderDetail;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Hash;
 
@@ -33,7 +35,9 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        $historys = Order::where('id_user', FacadesAuth::user()->id)->where('status_order', '!=', 0)->get();
+
+        return view('my.history', compact('historys'));
     }
 
     /**
@@ -55,7 +59,11 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::where('id', $id)->first();
+        $order_details = OrderDetail::where('id_order', $order->id)->get();
+
+        return view('my.history_detail', compact('order', 'order_details'));
+
     }
 
     /**

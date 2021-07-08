@@ -33,3 +33,5 @@ Route::get('garage', 'GarageController@index');
 Route::get('profile', 'ProfileController@index');
 Route::post('profile', 'ProfileController@update');
 Route::get('car', 'CarController@index');
+Route::get('history', 'ProfileController@create');
+Route::get('history/detail/{id}', 'ProfileController@show');

@@ -76,7 +76,7 @@ class OrderController extends Controller
             $car->update();
         }
 
-        return redirect('rent')->with('toast_success', 'Berhasil, Mobil Masuk ke Garasi Anda !');
+        return redirect('history/detail/'.$id_order)->with('toast_success', 'Berhasil, Silahkan Lanjut ke Pembayaran !');
     }
 
     /**
@@ -122,6 +122,7 @@ class OrderController extends Controller
             $order->id_user = FacadesAuth::user()->id;
             $order->date_order = $date;
             $order->price_order = 0;
+            $order->code_order = mt_rand(100, 999);
             $order->status_order = 0;
             $order->save();
         }

@@ -18,6 +18,7 @@ class CreateTbOrdersTable extends Migration
             $table->integer('id_user');
             $table->date('date_order');
             $table->integer('price_order');
+            $table->integer('code_order');
             $table->string('status_order');
             $table->timestamps();
         });
