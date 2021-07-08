@@ -21,7 +21,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-## Run MyCari
+## Run MyCarin
 ```
 php artisan serve
 ```
