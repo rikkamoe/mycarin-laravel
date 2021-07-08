@@ -111,5 +111,14 @@ class CarSeeder extends Seeder
             'created_at' => '2021-07-05 12:31:36',
             'updated_at' => '2021-07-05 12:31:36'
         ]);
+        DB::table('tb_cars')->insert([
+            'name_car' => 'Sirion',
+            'type_car' => 'Matic',
+            'description_car' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum, omnis rem? Aliquid soluta cupiditate impedit odit nulla ut perferendis ducimus repudiandae voluptatibus dolore, iusto quia veritatis autem officiis veniam vero.',
+            'price_car' => '315000',
+            'img_car' => 'sirion.jpg',
+            'created_at' => '2021-07-05 12:31:36',
+            'updated_at' => '2021-07-05 12:31:36'
+        ]);
     }
 }

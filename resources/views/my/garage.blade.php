@@ -36,7 +36,7 @@
                                     <td valign="middle"><h5>Rp. {{ number_format($garage_detail->total_price) }}</h5></td>
                                     <td valign="middle">
                                         @if ($garage_detail->status_order = 1)
-                                        <h5>Masih Disewa</h5>
+                                        <h5>Masih Tahap Pembayaran</h5>
                                         @endif
                                     </td>
                                 </tr>
