@@ -19,7 +19,7 @@ class CarController extends Controller
 
     public function index()
     {
-        $cars = Car::where('status_car', 1)->get();
+        $cars = Car::where('status_car', 1)->paginate(6);
         return view('my.car', compact('cars'));
     }
 
@@ -41,7 +41,21 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $price_from = $request->price_from;
+        $price_to = $request->price_to;
+        $type = $request->type;
+        $name = $request->name;
+
+        if(empty($name))
+        {
+            $cars = Car::where('status_car', 1)->paginate(6);
+            return redirect('car')->with('toast_error', 'Gagal, Isi data filter lengkap terlebih dahulu !');
+        }
+        else
+        {
+            $cars = Car::where('name_car', 'LIKE', '%'.$name.'%')->where('type_car', $type)->whereBetween('price_car', [$price_from, $price_to])->paginate(6);
+            return view('my.car', compact('cars'));
+        }
     }
 
     /**

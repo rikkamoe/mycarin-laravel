@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Auth;
 
 // Guest
 Route::get('/', 'WelcomeController@index')->name('welcome');
-Route::get('detail/{id}', 'WelcomeController@show')->name('detail');
-Route::get('product', 'WelcomeController@create')->name('product');
+Route::get('detail/{id}', 'WelcomeController@show');
+Route::get('product', 'WelcomeController@create');
+Route::get('product/search', 'WelcomeController@store');
 
 // Auth Login
 Auth::routes();
@@ -33,5 +34,6 @@ Route::get('garage', 'GarageController@index');
 Route::get('profile', 'ProfileController@index');
 Route::post('profile', 'ProfileController@update');
 Route::get('car', 'CarController@index');
+Route::get('car/search', 'CarController@store');
 Route::get('history', 'ProfileController@create');
 Route::get('history/detail/{id}', 'ProfileController@show');
