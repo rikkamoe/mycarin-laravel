@@ -17,6 +17,8 @@ class CreateTbCarsTable extends Migration
             $table->id();
             $table->string('name_car');
             $table->string('type_car');
+            $table->string('field_car');
+            $table->string('season_car');
             $table->longText('description_car');
             $table->integer('price_car');
             $table->string('img_car');

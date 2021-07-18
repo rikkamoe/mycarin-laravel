@@ -21,6 +21,7 @@
                     <select id="exampleFormControlInput1" class="form-select" name="price_to" aria-label="Default select example">
                         <option value="200000">Rp. 200.000</option>
                         <option value="300000">Rp. 300.000</option>
+                        <option value="400000">Rp. 400.000</option>
                         <option value="500000">Rp. 500.000</option>
                     </select>
                 </div>
@@ -33,7 +34,7 @@
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" value="Manual" name="type" id="flexRadioDefault2" checked>
+                        <input class="form-check-input" type="radio" value="Manual" name="type" id="flexRadioDefault2">
                         <label class="form-check-label" for="flexRadioDefault2">
                         Manual
                         </label>
@@ -43,6 +44,49 @@
                     <div class="input-group mt-3">
                         <input type="text" class="form-control" name="name" placeholder="Cari Mobil" value="{{ old('search') }}" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-primary" type="submit" id="button-addon2"><i class="fa fa-search"></i> Cari</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3 mt-1">
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Filter Lainnya
+                </a>
+                <div class="collapse mt-3" id="collapseExample">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="exampleFormControlInput1" class="form-label"><b>Mobil Medan</b></label><br />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="field" value="Santai">
+                                <label class="form-check-label" for="inlineCheckbox1">Santai</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="field" value="Medium">
+                                <label class="form-check-label" for="inlineCheckbox1">Medium</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="field" value="Offroad">
+                                <label class="form-check-label" for="inlineCheckbox1">Offroad</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="exampleFormControlInput1" class="form-label"><b>Mobil Musim</b></label><br />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="season" value="Panas">
+                                <label class="form-check-label" for="inlineCheckbox1">Panas</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="season" value="Gugur">
+                                <label class="form-check-label" for="inlineCheckbox1">Gugur</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="season" value="Semi">
+                                <label class="form-check-label" for="inlineCheckbox1">Semi</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="season" value="Dingin">
+                                <label class="form-check-label" for="inlineCheckbox1">Dingin</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +117,6 @@
             <h4>Data mobil tidak ditemukan !</h4>
         </div>
         @endif
-
         <hr />
         {{ $cars->links() }}
     </div>

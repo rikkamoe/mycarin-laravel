@@ -21,6 +21,7 @@
                     <select id="exampleFormControlInput1" class="form-select" name="price_to" aria-label="Default select example">
                         <option value="200000">Rp. 200.000</option>
                         <option value="300000">Rp. 300.000</option>
+                        <option value="400000">Rp. 400.000</option>
                         <option value="500000">Rp. 500.000</option>
                     </select>
                 </div>

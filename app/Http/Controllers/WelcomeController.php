@@ -44,8 +44,8 @@ class WelcomeController extends Controller
 
         if(empty($name))
         {
-            $cars = Car::where('status_car', 1)->paginate(6);
-            return redirect('car')->with('toast_error', 'Gagal, Isi data filter lengkap terlebih dahulu !');
+            $cars = Car::where('type_car', $type)->whereBetween('price_car', [$price_from, $price_to])->paginate(6);
+            return view('my.car', compact('cars'));
         }
         else
         {
