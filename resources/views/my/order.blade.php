@@ -40,6 +40,9 @@
                                         <td>
                                             <div class="input-group">
                                                 <input type="text" name="daterange"/> <p class="mt-2" id="date_rent"></p>
+                                                <input type="hidden" name="tgl_in" id="tgl_in"/>
+                                                <input type="hidden" name="tgl_out" id="tgl_out"/>
+                                                <input type="hidden" name="rent" id="days"/>
                                             </div>
                                         </td>
                                     </tr>
@@ -48,13 +51,13 @@
                                         <td>:</td>
                                         <td>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                <input class="form-check-input" type="radio" value="yes" name="driver" id="flexRadioDefault1">
                                                 <label class="form-check-label" for="flexRadioDefault1">
                                                     Butuh Supir (+Rp. 100.000)
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                <input class="form-check-input" type="radio" value="no" name="driver" id="flexRadioDefault2" checked>
                                                 <label class="form-check-label" for="flexRadioDefault2">
                                                     Tanpa Supir (+Rp. 0)
                                                 </label>
@@ -89,7 +92,10 @@ $(function() {
         var Difference_In_Time = date2.getTime() - date1.getTime();
         var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
         var date_final = "Anda rental dari " + start.format('YYYY-MM-DD') + ' sampai ' + end.format('YYYY-MM-DD') + ' terhitung ' + Difference_In_Days + ' hari ';
-        document.getElementById("date_rent").innerHTML=date_final;
+        document.getElementById("date_rent").innerHTML = date_final;
+        document.getElementById("tgl_in").value = start.format('YYYY-MM-DD');
+        document.getElementById("tgl_out").value = end.format('YYYY-MM-DD');
+        document.getElementById("days").value = Difference_In_Days;
     });
 });
 </script>

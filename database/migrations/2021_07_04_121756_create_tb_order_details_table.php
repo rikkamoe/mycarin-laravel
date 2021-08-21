@@ -17,7 +17,10 @@ class CreateTbOrderDetailsTable extends Migration
             $table->id();
             $table->integer('id_order');
             $table->integer('id_car');
+            $table->string('date_in');
+            $table->string('date_out');
             $table->integer('rent');
+            $table->integer('driver');
             $table->integer('total_price');
             $table->timestamps();
         });

@@ -11,7 +11,12 @@
             <img src="{{ url('img/hero-img.svg') }}" width="500px" class="rounded mx-auto d-block img-fluid" alt="..."/>
         </div>
         <div class="row mt-3">
-            <h3 class="mb-3"><b>Produk Populer</b></h3>
+            <div class="col-md-10">
+                <h3 class="mb-3"><b>Produk Rekomendasi Cuaca Hari ini </b></h3>
+            </div>
+            <div class="col-md-2">
+                <img src="https://img.icons8.com/color/50/000000/rain--v1.png"/> 18&#8451; Denpasar
+            </div>
             <hr />
             @foreach ($cars as $car)
             <div class="col-md-4 mb-3">

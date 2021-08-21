@@ -87,6 +87,21 @@
                                 <label class="form-check-label" for="inlineCheckbox1">Dingin</label>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label for="exampleFormControlInput1" class="form-label"><b>Type Kebutuhan</b></label><br />
+                            <div class="form-check form-check-inline mt-2">
+                                <input class="form-check-input" type="radio" value="Matic" name="type" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                Mobil Barang
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" value="Manual" name="type" id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                Mobil Minibus
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

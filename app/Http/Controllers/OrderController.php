@@ -38,10 +38,15 @@ class OrderController extends Controller
         $order = Order::where('id_user', FacadesAuth::user()->id)->where('status_order', 0)->first();
 
         //Check order
-        if(!empty($order))
+        if (!empty($order))
         {
             $order_details = OrderDetail::where('id_order', $order->id)->get();
         }
+        else
+        {
+            $order_details = Order::where('id_user', FacadesAuth::user()->id)->where('status_order', 0)->first();
+        }
+
 
         return view('my.rent', compact('order', 'order_details'));
     }
@@ -57,7 +62,7 @@ class OrderController extends Controller
         //Validation user
         $user = User::where('id', FacadesAuth::user()->id)->first();
 
-        if(empty($user->address) && empty($user->telephone))
+        if (empty($user->address) && empty($user->telephone))
         {
             return redirect('profile')->with('toast_error', 'Gagal, Lengkapi identitas anda terlebih dahulu !');
         }
@@ -76,7 +81,7 @@ class OrderController extends Controller
             $car->update();
         }
 
-        return redirect('history/detail/'.$id_order)->with('toast_success', 'Berhasil, Silahkan Lanjut ke Pembayaran !');
+        return redirect('history/detail/' . $id_order)->with('toast_success', 'Berhasil, Silahkan Lanjut ke Pembayaran !');
     }
 
     /**
@@ -116,7 +121,7 @@ class OrderController extends Controller
         //Validation order and Save to order database
         $validation_order = Order::where('id_user', FacadesAuth::user()->id)->where('status_order', 0)->first();
 
-        if(empty($validation_order))
+        if (empty($validation_order))
         {
             $order = new Order;
             $order->id_user = FacadesAuth::user()->id;
@@ -131,14 +136,34 @@ class OrderController extends Controller
         $order_new = Order::where('id_user', FacadesAuth::user()->id)->where('status_order', 0)->first();
         $check_order = OrderDetail::where('id_car', $car->id)->where('id_order', $order_new->id)->first();
 
-        if(empty($check_order))
+        $type = $request->driver;
+
+        if (empty($check_order))
         {
-            $orderdetail = new OrderDetail;
-            $orderdetail->id_order = $order_new->id;
-            $orderdetail->id_car = $car->id;
-            $orderdetail->rent = $request->rent;
-            $orderdetail->total_price = $car->price_car * $request->rent;
-            $orderdetail->save();
+            if ($type == "yes")
+            {
+                $orderdetail = new OrderDetail;
+                $orderdetail->id_order = $order_new->id;
+                $orderdetail->id_car = $car->id;
+                $orderdetail->date_in = $request->tgl_in;
+                $orderdetail->date_out = $request->tgl_out;
+                $orderdetail->driver = 1;
+                $orderdetail->rent = $request->rent;
+                $orderdetail->total_price = ($car->price_car * $request->rent) + 100000;
+                $orderdetail->save();
+            }
+            else
+            {
+                $orderdetail = new OrderDetail;
+                $orderdetail->id_order = $order_new->id;
+                $orderdetail->id_car = $car->id;
+                $orderdetail->date_in = $request->tgl_in;
+                $orderdetail->date_out = $request->tgl_out;
+                $orderdetail->driver = 0;
+                $orderdetail->rent = $request->rent;
+                $orderdetail->total_price = $car->price_car * $request->rent;
+                $orderdetail->save();
+            }
         }
         else
         {
@@ -155,7 +180,15 @@ class OrderController extends Controller
 
         //Total price
         $order = Order::where('id_user', FacadesAuth::user()->id)->where('status_order', 0)->first();
-        $order->price_order = $order->price_order + $car->price_car * $request->rent;
+
+        if ($type == "yes")
+        {
+            $order->price_order = $order->price_order + $car->price_car * $request->rent + 100000;
+        }
+        else
+        {
+            $order->price_order = $order->price_order + $car->price_car * $request->rent;
+        }
         $order->update();
 
         return redirect('rent')->with('toast_success', 'Berhasil, Mobil Masuk ke Penyewaan Anda !');
@@ -178,10 +211,10 @@ class OrderController extends Controller
 
         //Check order
         $check_order = Order::where('id_user', FacadesAuth::user()->id)->where('price_order', 0)->first();
-        if(!empty($check_order))
+        if (!empty($check_order))
         {
-           $check_order->delete();
-           return redirect('rent')->with('toast_success', 'Berhasil, Mobil Keluar dari Penyewaan Anda !');
+            $check_order->delete();
+            return redirect('rent')->with('toast_success', 'Berhasil, Mobil Keluar dari Penyewaan Anda !');
         }
 
         return redirect('rent')->with('toast_success', 'Berhasil, Mobil Keluar dari Penyewaan Anda !');
