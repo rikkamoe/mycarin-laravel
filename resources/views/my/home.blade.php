@@ -4,8 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 mb-5">
-            <h1 class="mt-5">MyCarin is your choice</h1>
-            <h3 class="mt-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque illum saepe temporibus</h3>
+            <h1 class="mt-5">MyCarin</h1>
+            <h4 class="mt-5">Mau setir sendiri atau dengan supir bisa dilakukan dalam satu aplikasi dilengkapi 
+                dengan referensi kendaraan sesuai prediksi cuaca demi kenyamanan anda.</h4>
         </div>
         <div class="col-md-6 mb-5">
             <img src="{{ url('img/hero-img.svg') }}" width="500px" class="rounded mx-auto d-block img-fluid" alt="..."/>
