@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6 mb-5">
             <h1 class="mt-5">MyCarin</h1>
-            <h4 class="mt-5">Mau setir sendiri atau dengan supir bisa dilakukan dalam satu aplikasi dilengkapi 
+            <h4 class="mt-5">Mau setir sendiri atau dengan supir bisa dilakukan dalam satu aplikasi yang dilengkapi 
                 dengan referensi kendaraan sesuai prediksi cuaca demi kenyamanan anda.</h4>
         </div>
         <div class="col-md-6 mb-5">
