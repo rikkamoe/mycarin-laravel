@@ -107,7 +107,7 @@ class CarSeeder extends Seeder
             'season_car' => 'Dingin, Semi',
             'description_car' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum, omnis rem? Aliquid soluta cupiditate impedit odit nulla ut perferendis ducimus repudiandae voluptatibus dolore, iusto quia veritatis autem officiis veniam vero.',
             'price_car' => '210000',
-            'img_car' => 'ignis.jpg',
+            'img_car' => 'ignisgl.jpg',
             'created_at' => '2021-07-05 12:31:36',
             'updated_at' => '2021-07-05 12:31:36'
         ]);

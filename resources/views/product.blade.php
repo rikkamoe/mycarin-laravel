@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 <p class="card-text">Type : {{ $car->type_car }}</p>
-                <a href="{{ url('detail') }}/{{ $car->id }}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Rental Sekarang</a>
+                        <a href="{{ url('order') }}/{{ $car->id }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> Rental Sekarang</a>
                 </div>
             </div>
         </div>

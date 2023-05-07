@@ -24,6 +24,8 @@ class GarageController extends Controller
     {
         $garage = Order::where('id_user', FacadesAuth::user()->id)->where('status_order', 1)->first();
 
+        $garage_details = null; //tambahkan inisialisasi variabel
+
         //Check order
         if(!empty($garage))
         {
