@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-6">
       <h2>{{ $car->name_car }}</h2>
-      <a>Pemilik : <b>Autobagus Rent Car</b></a>
+      <a>Pemilik : <b>Artawan Rentcar</b></a>
       <table class="table">
         <tbody>
           <tr>
@@ -30,7 +30,9 @@
           </tr>
           <tr>
             <td>Deskripsi Mobil</td>
-            <td><pre>{{ $car->description_car }}</pre></td>
+            <td>
+              <pre>{{ $car->description_car }}</pre>
+            </td>
           </tr>
           <form action="{{ url('order') }}/{{ $car->id }}" method="POST">
             @csrf
@@ -38,10 +40,10 @@
               <td>Sewa Harian</td>
               <td>
                 <div class="input-group">
-                  <input type="text" name="daterange" class="form-control"/> 
-                  <input type="hidden" name="tgl_in" id="tgl_in"/>
-                  <input type="hidden" name="tgl_out" id="tgl_out"/>
-                  <input type="hidden" name="rent" id="days"/>
+                  <input type="text" name="daterange" class="form-control" />
+                  <input type="hidden" name="tgl_in" id="tgl_in" />
+                  <input type="hidden" name="tgl_out" id="tgl_out" />
+                  <input type="hidden" name="rent" id="days" />
                 </div>
               </td>
             </tr>
@@ -70,7 +72,7 @@
             </tr>
           </form>
         </tbody>
-        
+
       </table>
     </div>
   </div>
@@ -78,31 +80,29 @@
 
 
 <script>
-$(document).ready(function() {
-  flatpickr('input[name="daterange"]', {
-    mode: 'range',
-    dateFormat: 'Y-m-d',
-    onClose: function(selectedDates, dateStr, instance) {
-      if (selectedDates.length > 0) {
-        var days = Math.ceil((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
-        $('#tgl_in').val(selectedDates[0].toISOString().split('T')[0]);
-        $('#tgl_out').val(selectedDates[1].toISOString().split('T')[0]);
-        $('#days').val(days);
-        $('input[name="daterange"]').val(selectedDates[0].toLocaleDateString('id-ID') + ' - ' + selectedDates[1].toLocaleDateString('id-ID'));
+  $(document).ready(function() {
+    flatpickr('input[name="daterange"]', {
+      mode: 'range',
+      dateFormat: 'Y-m-d',
+      onClose: function(selectedDates, dateStr, instance) {
+        if (selectedDates.length > 0) {
+          var days = Math.ceil((selectedDates[1] - selectedDates[0]) / (1000 * 60 * 60 * 24));
+          $('#tgl_in').val(selectedDates[0].toISOString().split('T')[0]);
+          $('#tgl_out').val(selectedDates[1].toISOString().split('T')[0]);
+          $('#days').val(days);
+          $('input[name="daterange"]').val(selectedDates[0].toLocaleDateString('id-ID') + ' - ' + selectedDates[1].toLocaleDateString('id-ID'));
+        }
+      },
+      allowInput: true,
+      clickOpens: true,
+      showButtonPanel: true,
+      onReady: function(selectedDates, dateStr, instance) {
+        instance.element.parentNode.querySelectorAll('.flatpickr-button').forEach(function(e) {
+          e.innerHTML = 'Apply';
+          e.style.display = 'block';
+        });
       }
-    },
-    allowInput: true,
-    clickOpens: true,
-    showButtonPanel: true,
-    onReady: function(selectedDates, dateStr, instance) {
-      instance.element.parentNode.querySelectorAll('.flatpickr-button').forEach(function(e){
-        e.innerHTML = 'Apply';
-        e.style.display = 'block';
-      });
-    }
+    });
   });
-});
-
-
 </script>
 @endsection

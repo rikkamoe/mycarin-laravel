@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Car;
 
+use App\Car;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -39,24 +39,32 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function search(Request $request)
     {
         $price_from = $request->price_from;
         $price_to = $request->price_to;
         $type = $request->type;
         $name = $request->name;
 
-        if(empty($name))
-        {
-            $cars = Car::where('type_car', $type)->whereBetween('price_car', [$price_from, $price_to])->paginate(6);
-            return view('my.car', compact('cars'));
+        $query = Car::where('status_car', 1);
+
+        if (!empty($name)) {
+            $query->where('name_car', 'LIKE', '%' . $name . '%');
         }
-        else
-        {
-            $cars = Car::where('name_car', 'LIKE', '%'.$name.'%')->where('type_car', $type)->whereBetween('price_car', [$price_from, $price_to])->paginate(6);
-            return view('my.car', compact('cars'));
+
+        if (!empty($type)) {
+            $query->where('type_car', $type);
         }
+
+        if (!empty($price_from) && !empty($price_to)) {
+            $query->whereBetween('price_car', [$price_from, $price_to]);
+        }
+
+        $cars = $query->paginate(6);
+
+        return view('my.car', compact('cars'));
     }
+
 
     /**
      * Display the specified resource.

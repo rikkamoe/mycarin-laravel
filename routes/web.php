@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::get('garage', 'GarageController@index');
 Route::get('profile', 'ProfileController@index');
 Route::post('profile', 'ProfileController@update');
 Route::get('car', 'CarController@index');
-Route::get('car/search', 'CarController@store');
+Route::get('/car/search', [CarController::class, 'search'])->name('car.search');
 Route::get('history', 'ProfileController@create');
 Route::get('history/detail/{id}', 'ProfileController@show');
+
+// Admin

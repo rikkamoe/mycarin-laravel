@@ -13,15 +13,22 @@ class CarSeeder extends Seeder
     public function run()
     {
         DB::table('tb_cars')->insert([
-            'name_car' => 'Honda Brio',
-            'type_car' => 'Matic',
-            'field_car' => 'Santai',
-            'season_car' => 'Dingin, Semi',
-            'description_car' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum, omnis rem? Aliquid soluta cupiditate impedit odit nulla ut perferendis ducimus repudiandae voluptatibus dolore, iusto quia veritatis autem officiis veniam vero.',
-            'price_car' => '200000',
-            'img_car' => 'brio.jpg',
-            'created_at' => '2021-07-05 12:31:36',
-            'updated_at' => '2021-07-05 12:31:36'
+            'name_car' => '',
+            /** nama mobil */
+            'type_car' => '',
+            /** Manual / Matic*/
+            'field_car' => '',
+            /** Santai / Medium / Offroad*/
+            'season_car' => '',
+            /** Gugur/ Semi/ Dingin/ Panas*/
+            'description_car' => '',
+            /** Deskripsi mobil*/
+            'price_car' => '',
+            /** harga mobil*/
+            'img_car' => '',
+            /** ignis.jpg*/
+            'created_at' => '2023-07-05 12:31:36',
+            'updated_at' => '2023-07-05 12:31:36'
         ]);
         DB::table('tb_cars')->insert([
             'name_car' => 'Daihatsu Ayla',

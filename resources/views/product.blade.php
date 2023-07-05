@@ -7,22 +7,33 @@
         <hr />
         <form action="{{ url('product/search') }}" method="GET">
             <div class="row mb-3 mt-1">
-                <div class="col-md-2 mt-3"><h5>Filter Mobil MyCarin</h5></div>
+                <div class="col-md-2 mt-3">
+                    <h5>Filter Mobil MyCarin</h5>
+                </div>
                 <div class="col-md-2">
                     <label for="exampleFormControlInput1" class="form-label"><b>Dari Harga</b></label>
                     <select id="exampleFormControlInput1" class="form-select" name="price_from" aria-label="Default select example">
                         <option value="100000">Rp. 100.000</option>
                         <option value="200000">Rp. 200.000</option>
                         <option value="300000">Rp. 300.000</option>
+                        <option value="300000">Rp. 400.000</option>
+                        <option value="300000">Rp. 500.000</option>
+                        <option value="300000">Rp. 600.000</option>
+                        <option value="300000">Rp. 700.000</option>
+                        <option value="300000">Rp. 800.000</option>
+                        <option value="300000">Rp. 900.000</option>
                     </select>
                 </div>
                 <div class="col-md-2">
                     <label for="exampleFormControlInput1" class="form-label"><b>Sampai Harga</b></label>
                     <select id="exampleFormControlInput1" class="form-select" name="price_to" aria-label="Default select example">
-                        <option value="200000">Rp. 200.000</option>
                         <option value="300000">Rp. 300.000</option>
-                        <option value="400000">Rp. 400.000</option>
-                        <option value="500000">Rp. 500.000</option>
+                        <option value="300000">Rp. 400.000</option>
+                        <option value="300000">Rp. 500.000</option>
+                        <option value="300000">Rp. 600.000</option>
+                        <option value="300000">Rp. 700.000</option>
+                        <option value="300000">Rp. 800.000</option>
+                        <option value="300000">Rp. 900.000</option>
                     </select>
                 </div>
                 <div class="col-md-2">
@@ -30,13 +41,13 @@
                     <div class="form-check form-check-inline mt-2">
                         <input class="form-check-input" type="radio" value="Matic" name="type" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">
-                        Matic
+                            Matic
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" value="Manual" name="type" id="flexRadioDefault2" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
-                        Manual
+                            Manual
                         </label>
                     </div>
                 </div>
@@ -49,7 +60,11 @@
             </div>
         </form>
         <hr />
-        @foreach ($cars as $car)
+        @php
+        $randomCars = \App\Car::inRandomOrder()->paginate(9);
+        @endphp
+
+        @foreach ($randomCars as $car)
         <div class="col-md-4 mb-3">
             <div class="card">
                 <img src="{{ url('img_uploads') }}/{{ $car->img_car }}" class="card-img-top" alt="...">
@@ -62,14 +77,14 @@
                             <h5 class="float-right"><b>Rp. {{ number_format($car->price_car) }}</b></h5>
                         </div>
                     </div>
-                <p class="card-text">Type : {{ $car->type_car }}</p>
-                        <a href="{{ url('order') }}/{{ $car->id }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> Rental Sekarang</a>
+                    <p class="card-text">Type: {{ $car->type_car }}</p>
+                    <a href="{{ url('order') }}/{{ $car->id }}" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> Rental Sekarang</a>
                 </div>
             </div>
         </div>
         @endforeach
-        <hr />
-        {{ $cars->links() }}
+
+        {{ $randomCars->links() }}
     </div>
 </div>
 @endsection
