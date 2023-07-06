@@ -95,7 +95,7 @@
       <img src="{{ asset('img/mobil.jpg') }}" alt="Car Image" />
     </div>
     <div class="car-description">
-      <h1>MyCarin</h1>
+      <h1 style="color: #00afef"><strong>MyCarin</strong></h1>
       <h4>Temukan Harga Terbaik dan Rekomendasi Kendaraan dengan Mudah.</h4>
       <p>Segera Bergabung dan Temukan Kemudahan Rental Mobil Setir Sendiri atau Gunakan Supir, Semua dalam Satu Aplikasi yang Terpercaya. Jelajahi Dunia Rental Mobil yang Praktis dan Efisien bersama MyCarin!</p>
     </div>
@@ -121,7 +121,7 @@
           <h5 class="card-title mb-2">{{ $car->name_car }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">Rp. {{ number_format($car->price_car) }}</h6>
           <p class="card-text mb-3">Type: {{ $car->type_car }}</p>
-          <a href="{{ url('order') }}/{{ $car->id }}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Rental Sekarang</a>
+          <a href="{{ url('detail') }}/{{ $car->id }}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Rental Sekarang</a>
         </div>
       </div>
     </div>
